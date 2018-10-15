@@ -7,17 +7,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Projects")
-public class Project {
+@Table(name = "Tasks")
+public class Task {
 
 	@Id
 	@GeneratedValue
     @Column(name = "PROJECT_ID")
 	private Integer projectId;
+		
+	@Column(name = "TASK")
+	private String task;
 	
-	@Column(name = "MANAGER")
-	private String manager;
+	@Column(name = "PRIORITY")
+	private Integer priority;
 	
+	@Column(name = "PARENT_TASK")
+	private boolean parentTask;
+			
 	@Column(name = "PROJECT")
 	private String project;
 	
@@ -26,9 +32,8 @@ public class Project {
 	
 	@Column(name = "END_DATE")
 	private Integer endDate;
-	
-	@Column(name = "PRIORITY")
-	private Integer priority;
+		
+//	private User user;	
 
 	public Integer getProjectId() {
 		return projectId;
@@ -38,14 +43,6 @@ public class Project {
 		this.projectId = projectId;
 	}
 	
-	public String getManager() {
-		return manager;
-	}
-
-	public void setManager(String manager) {
-		this.manager = manager;
-	}	
-
 	public String getProject() {
 		return project;
 	}
@@ -77,5 +74,29 @@ public class Project {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
+
+	public String getTask() {
+		return task;
+	}
+
+	public void setTask(String task) {
+		this.task = task;
+	}
+
+	public boolean isParentTask() {
+		return parentTask;
+	}
+
+	public void setParentTask(boolean parentTask) {
+		this.parentTask = parentTask;
+	}
+
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	
 }

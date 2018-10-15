@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.manager.model.User;
 
-public interface EmployeeService {
+public interface UserService {
 	void save(User employee);
 	
 	 List<User> list();

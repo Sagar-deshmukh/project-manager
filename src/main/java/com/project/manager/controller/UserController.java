@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.manager.model.Project;
 import com.project.manager.model.User;
-import com.project.manager.service.EmployeeService;
+import com.project.manager.service.UserService;
 
 @RestController
-public class ProjectManagerController {
+public class UserController {
 
 	@Autowired
-	private EmployeeService employeeService;
+	private UserService userService;
 	
 	
 	/**This method retrieves all the users.
@@ -27,7 +26,7 @@ public class ProjectManagerController {
 	@GetMapping("/getUsers")
 	public List<User> getUsers() {
 
-		return employeeService.list();
+		return userService.list();
 	}
 	
 	/**This method add user to the record.
@@ -37,7 +36,7 @@ public class ProjectManagerController {
 	@PostMapping("/addUser")
 	public List<User> addUser(@RequestBody User user) {
 
-		employeeService.save(user);
+		userService.save(user);
 
 		return this.getUsers();
 	}
@@ -49,9 +48,9 @@ public class ProjectManagerController {
 	@PostMapping("/deleteUser")
 	public List<User> deleteUser(@RequestBody User user) {
 
-		employeeService.remove(user);
+		userService.remove(user);
 
-		return employeeService.list();
+		return userService.list();
 	}
 	
 	
@@ -62,29 +61,9 @@ public class ProjectManagerController {
 	@PostMapping("/updateUser")
 	public List<User> updateUser(@RequestBody User user) {
 
-		employeeService.update(user);
+		userService.update(user);
 
-		return employeeService.list();
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/addProject")
-	public Project addProject() {
-
-		Project project = new Project();
-
-		return project;
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/viewTask")
-	public User viewTask() {
-
-		User employee = new User();
-		employee.setFirstName("Sagar");
-		employee.setLastName("Deshmukh");
-
-		return employee;
+		return userService.list();
 	}
 
 }

@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,8 @@ public class User {
 	@Column(name = "LAST_NAME")
 	private String lastName;
 	
+//	@OneToOne
+//	@MapsId
 	@Column(name = "EMP_ID")
 	private Integer empID;
 	

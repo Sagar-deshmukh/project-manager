@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.manager.dao.EmployeeDao;
+import com.project.manager.dao.UserDao;
 import com.project.manager.model.User;
-import com.project.manager.service.EmployeeService;
+import com.project.manager.service.UserService;
 
 @Service
-public class EmployeeServiceImp implements EmployeeService {
+public class UserServiceImp implements UserService {
 
 	@Autowired
-	private EmployeeDao userDao;
+	private UserDao userDao;
 
 	@Transactional
 	public void save(User user) {

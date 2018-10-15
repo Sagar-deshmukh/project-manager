@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.manager.model.User;
 
-public interface EmployeeDao {
+public interface ViewTaskDao {
    void save(User user);
    
    List<User> list();
