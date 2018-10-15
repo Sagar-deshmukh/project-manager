@@ -22,15 +22,16 @@ public class ProjectServiceImp implements ProjectService {
 
 	@Autowired
 	private ProjectDao projectDao;
-
-	@Transactional
-	public void save(Project user) {
-		projectDao.save(user);
-	}
+	
 
 	@Transactional(readOnly = true)
 	public List<Project> getProjects() {
 		return projectDao.getProjects();
+	}
+
+	@Transactional
+	public void save(Project user) {
+		projectDao.save(user);
 	}
 
 	@Transactional

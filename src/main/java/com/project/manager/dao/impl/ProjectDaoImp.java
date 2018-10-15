@@ -32,20 +32,19 @@ public class ProjectDaoImp implements ProjectDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Project> getProjects() {
-		TypedQuery<Project> query = sessionFactory.getCurrentSession().createQuery("from Projects");
+		TypedQuery<Project> query = sessionFactory.getCurrentSession().createQuery("from Project");
 		return query.getResultList();
 	}
 
 	@Override
 	public void remove(Project project) {
-		String sql = "DELETE FROM Users WHERE EMP_ID = :EMP_ID";
-		sessionFactory.getCurrentSession().createNativeQuery(sql).setParameter("EMP_ID", project.getProjectId())
+		String sql = "DELETE FROM Projects WHERE PROJECT_ID = :PROJECT_ID";
+		sessionFactory.getCurrentSession().createNativeQuery(sql).setParameter("PROJECT_ID", project.getProjectId())
 				.executeUpdate();
 	}
 
 	@Override
 	public void update(Project project) {
-		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().saveOrUpdate(project);
 
 	}

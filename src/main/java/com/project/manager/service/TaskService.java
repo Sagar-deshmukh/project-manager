@@ -13,11 +13,9 @@ import com.project.manager.model.Task;
  */
 public interface TaskService {
 
-	List<Task> getProjects();
+	List<Task> getAllTasks();
 
 	void save(Task task);
-
-	void remove(Task task);
 
 	void update(Task task);
 

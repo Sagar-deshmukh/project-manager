@@ -1,66 +1,62 @@
 package com.project.manager.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.manager.model.Project;
-import com.project.manager.model.User;
+import com.project.manager.model.Task;
+import com.project.manager.service.TaskService;
 
 @RestController
 public class TaskController {
-/*
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/projectSearch")
-	public User projectSearch() {
 
-		User employee = new User();
-		employee.setFirstName("Sagar");
-		employee.setLastName("Deshmukh");
-
-		return employee;
-	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/parentTaskSearch")
-	public User parentTaskSearch() {
-
-		User employee = new User();
-		employee.setFirstName("Sagar");
-		employee.setLastName("Deshmukh");
-
-		return employee;
-	}
-	
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/userSearch")
-	public User userSearch() {
-
-		User employee = new User();
-		employee.setFirstName("Sagar");
-		employee.setLastName("Deshmukh");
-
-		return employee;
-	}
+	@Autowired
+	private TaskService taskService;
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/addTask")
-	public Project addTask() {
+	public Task addTask() {
 
-		Project project = new Project();
+		Task task = new Task();
+		task.setParentTask(false);
+		task.setPriority(30);
+		task.setProject("Manager");
+		task.setTask("create UI page");
 
-		return project;
+		taskService.save(task);
+
+		return task;
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/updateTask")
-	public Project updateTask() {
-
-		Project project = new Project();
-
-		return project;
+	@PostMapping("/updateTask")
+	public Task updateTask(@RequestBody Task task) {
+		taskService.update(task);
+		return task;
 	}
-*/
-}
 
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/projectSearch")
+	public Task projectSearch(@RequestBody Task task) {
+
+		return task;
+
+	}
+
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/parentTaskSearch")
+	public Task parentTaskSearch(@RequestBody Task task) {
+		return task;
+	}
+
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/userSearch")
+	public Task userSearch(@RequestBody Task task) {
+
+		return task;
+	}
+
+}

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.manager.model.Project;
@@ -15,8 +17,7 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
-	
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/getProjects")
 	public List<Project> getProjects() {
@@ -24,42 +25,44 @@ public class ProjectController {
 		return projectService.getProjects();
 
 	}
-	
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/addProject")
-	public Project addProject() {
+	public List<Project> addProject() {
 
 		Project project = new Project();
+		project.setManager("Sagar deshmukh");
+		project.setPriority(10);
+		project.setProject("PRoject Manager");
 
-		return project;
+		projectService.save(project);
+		return this.getProjects();
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/updateProject")
-	public Project updateProject() {
+	@PostMapping("/updateProject")
+	public List<Project> updateProject(@RequestBody Project project) {
 
-		Project project = new Project();
+		projectService.update(project);
 
-		return project;
+		return this.getProjects();
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/suspendProject")
-	public Project suspendProject() {
+	@PostMapping("/suspendProject")
+	public List<Project> suspendProject(@RequestBody Project project) {
 
-		Project project = new Project();
+		projectService.update(project);
 
-		return project;
+		return this.getProjects();
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/searchProject")
-	public Project searchProject() {
+	@PostMapping("/searchManager")
+	public List<Project> searchManager(@RequestBody Project project) {
+		projectService.update(project);
 
-		Project project = new Project();
-
-		return project;
+		return this.getProjects();
 	}
 
 }
