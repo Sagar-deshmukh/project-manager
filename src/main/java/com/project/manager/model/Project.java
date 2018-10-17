@@ -3,17 +3,23 @@ package com.project.manager.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Projects")
-public class Project {
+public class Project implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PROJECT_ID")
-	private Integer projectId;
+	private Long projectId;
 	
 	@Column(name = "MANAGER")
 	private String manager;
@@ -30,11 +36,11 @@ public class Project {
 	@Column(name = "PRIORITY")
 	private Integer priority;
 
-	public Integer getProjectId() {
+	public Long getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(Integer projectId) {
+	public void setProjectId(Long projectId) {
 		this.projectId = projectId;
 	}
 	

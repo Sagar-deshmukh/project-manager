@@ -1,5 +1,7 @@
 package com.project.manager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.manager.model.Project;
 import com.project.manager.model.Task;
 import com.project.manager.service.TaskService;
 
@@ -23,7 +26,15 @@ public class TaskController {
 		Task task = new Task();
 		task.setParentTask(false);
 		task.setPriority(30);
-		task.setProject("Manager");
+		
+
+		Project project = new Project();
+		project.setManager("Sagar deshmukh");
+		project.setPriority(10);
+	//	project.setProject("PRoject Manager");
+
+		
+		task.setProject(project);
 		task.setTask("create UI page");
 
 		taskService.save(task);
@@ -57,6 +68,12 @@ public class TaskController {
 	public Task userSearch(@RequestBody Task task) {
 
 		return task;
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/viewTask")
+	public List<Task> viewTask() {
+		return taskService.getAllTasks();
 	}
 
 }

@@ -1,19 +1,26 @@
 package com.project.manager.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Tasks")
-public class Task {
+public class Task implements java.io.Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
-    @Column(name = "PROJECT_ID")
-	private Integer projectId;
+    @Column(name = "TASK_ID")
+	private Integer taskId;
 		
 	@Column(name = "TASK")
 	private String task;
@@ -23,9 +30,12 @@ public class Task {
 	
 	@Column(name = "PARENT_TASK")
 	private boolean parentTask;
-			
-	@Column(name = "PROJECT")
-	private String project;
+	
+	//Many to one Mapping example
+	@ManyToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name="PROJECT",referencedColumnName="PROJECT_ID")
+	//@PrimaryKeyJoinColumn
+	private Project project;
 	
 	@Column(name = "START_DATE")
 	private String startDate;
@@ -33,21 +43,19 @@ public class Task {
 	@Column(name = "END_DATE")
 	private Integer endDate;
 		
-//	private User user;	
-
 	public Integer getProjectId() {
-		return projectId;
+		return taskId;
 	}
 
 	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
+		this.taskId = projectId;
 	}
 	
-	public String getProject() {
+	public Project getProject() {
 		return project;
 	}
 
-	public void setProject(String project) {
+	public void setProject(Project project) {
 		this.project = project;
 	}
 
@@ -90,13 +98,5 @@ public class Task {
 	public void setParentTask(boolean parentTask) {
 		this.parentTask = parentTask;
 	}
-
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
 	
 }

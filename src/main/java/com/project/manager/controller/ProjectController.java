@@ -33,7 +33,7 @@ public class ProjectController {
 		Project project = new Project();
 		project.setManager("Sagar deshmukh");
 		project.setPriority(10);
-		project.setProject("PRoject Manager");
+	//	project.setProject("PRoject Manager");
 
 		projectService.save(project);
 		return this.getProjects();
