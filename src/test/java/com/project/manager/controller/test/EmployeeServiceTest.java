@@ -2,8 +2,8 @@ package com.project.manager.controller.test;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,18 +30,20 @@ public class EmployeeServiceTest {
 	public void testSaveMethod() {
 
 		User employee = new User();
-		employee.setFirstName("hi");
-		employee.setLastName("sagar");
-		employee.setEmpID(234);
+		employee.setFirstName("food bazaar");
+		employee.setLastName("deshmukh");
+		employee.setEmpID(12345678);
 
-		test.save(employee);
+		test.update(employee);
 
 		List<User> product = test.list();
-		assertTrue(product.stream().filter(p -> p.getEmpID().equals(622228)).findFirst().isPresent());
-		// product.sort((o1,o2) ->
-		// o1.getFirstName().compareTo(o2.getFirstName()));
+		assertTrue(product.stream().filter(p -> p.getEmpID().equals(12345678)).findFirst().isPresent());
+		
+		//product.stream().filter(p -> p.getEmpID().equals(234)).collect(Collectors.toList());
+		product.stream().sorted((p1, p2) -> p1.getLastName().compareToIgnoreCase(p2.getLastName())).collect(Collectors.toList());
+		// product.sort((o1,o2) -> o1.getFirstName().compareTo(o2.getFirstName()));
 		// product.forEach(d ->System.out.println(d.getFirstName()));
-		product.sort(Comparator.comparing(User::getUserId));
-		product.forEach(d -> System.out.println(d.getFirstName() + "" + d.getUserId()));
+		// product.sort(Comparator.comparing(User::getUserId));
+		product.forEach(d -> System.out.println(d.getLastName() + "" + d.getUserId()));
 	}
 }
