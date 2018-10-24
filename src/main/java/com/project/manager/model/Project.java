@@ -1,5 +1,7 @@
 package com.project.manager.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Projects")
-public class Project implements java.io.Serializable {
+public class Project implements Serializable{
 
 	/**
 	 * 
@@ -31,7 +33,7 @@ public class Project implements java.io.Serializable {
 	private String startDate;
 	
 	@Column(name = "END_DATE")
-	private Integer endDate;
+	private String endDate;
 	
 	@Column(name = "PRIORITY")
 	private Integer priority;
@@ -68,11 +70,11 @@ public class Project implements java.io.Serializable {
 		this.startDate = startDate;
 	}
 
-	public Integer getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Integer endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

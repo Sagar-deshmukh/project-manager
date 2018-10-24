@@ -1,36 +1,40 @@
 package com.project.manager.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-    @Column(name = "USER_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "USER_ID")
 	private Integer userId;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
-//	@OneToOne
-//	@MapsId
+
 	@Column(name = "EMP_ID")
 	private Integer empID;
-	
-	@Column(name = "PROJECT_ID")
-	private String projectId;
-	
+
+	@Column(name = "PROJECTEDID")
+	private String projectedId;
+
 	@Column(name = "TASK_ID")
 	private String taskId;
 
@@ -67,11 +71,11 @@ public class User {
 	}
 
 	public String getProjectId() {
-		return projectId;
+		return projectedId;
 	}
 
 	public void setProjectId(String projectId) {
-		this.projectId = projectId;
+		this.projectedId = projectId;
 	}
 
 	public String getTaskId() {
@@ -81,7 +85,5 @@ public class User {
 	public void setTaskId(String taskId) {
 		this.taskId = taskId;
 	}
-	
-	
-	
+
 }

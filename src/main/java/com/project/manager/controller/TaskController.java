@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.manager.model.Project;
 import com.project.manager.model.Task;
 import com.project.manager.service.TaskService;
 
@@ -20,22 +19,21 @@ public class TaskController {
 	private TaskService taskService;
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/addTask")
-	public Task addTask() {
+	@PostMapping("/addTask")
+	public Task addTask(@RequestBody Task task) {
 
-		Task task = new Task();
-		task.setParentTask(false);
-		task.setPriority(30);
-		
+		// Task task = new Task();
+		// task.setParentTask(false);
+		// task.setPriority(30);
+		//
+		//
+		// Project project = new Project();
+		// project.setManager("Sagar deshmukh");
+		// project.setPriority(10);
+		// project.setProject("PRoject Manager");
 
-		Project project = new Project();
-		project.setManager("Sagar deshmukh");
-		project.setPriority(10);
-	//	project.setProject("PRoject Manager");
-
-		
-		task.setProject(project);
-		task.setTask("create UI page");
+		// task.setProject(project);
+		// task.setTask("create UI page");
 
 		taskService.save(task);
 
@@ -69,7 +67,7 @@ public class TaskController {
 
 		return task;
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/viewTask")
 	public List<Task> viewTask() {

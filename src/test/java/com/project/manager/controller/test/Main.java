@@ -29,14 +29,14 @@ public class Main {
 			Task task = new Task();
 			task.setParentTask(true);
 			task.setPriority(100);
-			task.setProject(project);
+		//	task.setProject(project);
 			task.setTask("First task");
 			
 			Task task2 = new Task();
 			task2.setParentTask(true);
 			task2.setPriority(30);
 			task2.setTask("second task");
-			task2.setProject(project);
+		//	task2.setProject(project);
 			
 			session.save(task);
 			session.save(task2);

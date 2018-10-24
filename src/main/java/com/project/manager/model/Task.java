@@ -1,62 +1,81 @@
 package com.project.manager.model;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Tasks")
-public class Task implements java.io.Serializable{
-
+public class Task implements Serializable {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * Many to one Mapping example
+	 * 
+	 * @ManyToOne(cascade=CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="PROJECT",referencedColumnName="PROJECT_ID")
+	 * 
+	 * @PrimaryKeyJoinColumn
+	 */
+
 	@Id
-	@GeneratedValue
-    @Column(name = "TASK_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "TASK_ID")
 	private Integer taskId;
-		
+
 	@Column(name = "TASK")
 	private String task;
-	
+
 	@Column(name = "PRIORITY")
 	private Integer priority;
-	
+
 	@Column(name = "PARENT_TASK")
 	private boolean parentTask;
-	
-	//Many to one Mapping example
-	@ManyToOne(cascade=CascadeType.ALL)
-    //@JoinColumn(name="PROJECT",referencedColumnName="PROJECT_ID")
-	//@PrimaryKeyJoinColumn
-	private Project project;
-	
+
+	@Column(name = "PROJECT_NAME")
+	private String projectName;
+
 	@Column(name = "START_DATE")
 	private String startDate;
-	
+
 	@Column(name = "END_DATE")
-	private Integer endDate;
-		
-	public Integer getProjectId() {
+	private String endDate;
+
+	@Column(name = "USER_NAME")
+	private String user;
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public Integer getTaskId() {
 		return taskId;
 	}
 
-	public void setProjectId(Integer projectId) {
-		this.taskId = projectId;
-	}
-	
-	public Project getProject() {
-		return project;
+	public void setTaskId(Integer taskId) {
+		this.taskId = taskId;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public String getProject() {
+		return projectName;
+	}
+
+	public void setProject(String project) {
+		this.projectName = project;
 	}
 
 	public String getStartDate() {
@@ -67,11 +86,11 @@ public class Task implements java.io.Serializable{
 		this.startDate = startDate;
 	}
 
-	public Integer getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Integer endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
@@ -98,5 +117,5 @@ public class Task implements java.io.Serializable{
 	public void setParentTask(boolean parentTask) {
 		this.parentTask = parentTask;
 	}
-	
+
 }

@@ -1,19 +1,27 @@
 package com.project.manager.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Tasks")
-public class ViewTask {
+@Table(name = "ViewTasks")
+public class ViewTask implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-    @Column(name = "PROJECT_ID")
-	private Integer projectId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "view_Task_project_ID")
+	private Integer projectsId;
 		
 	@Column(name = "TASK")
 	private String task;
@@ -33,14 +41,12 @@ public class ViewTask {
 	@Column(name = "END_DATE")
 	private Integer endDate;
 		
-//	private User user;	
-
 	public Integer getProjectId() {
-		return projectId;
+		return projectsId;
 	}
 
 	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
+		this.projectsId = projectId;
 	}
 	
 	public String getProject() {
