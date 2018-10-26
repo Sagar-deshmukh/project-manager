@@ -30,13 +30,12 @@ public class ProjectController {
 	@PostMapping("/addProject")
 	public List<Project> addProject(@RequestBody Project project ) {
 
-//		Project project = new Project();
-//		project.setManager("Sagar deshmukh");
-//		project.setPriority(10);
-	//	project.setProject("PRoject Manager");
-
-		projectService.save(project);
-		return this.getProjects();
+		if (project.getProject() == null || project.getManager() == null) {
+			return this.getProjects();
+		} else {
+			projectService.save(project);
+			return this.getProjects();
+		}
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")

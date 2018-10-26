@@ -39,8 +39,11 @@ public class Task implements Serializable {
 	@Column(name = "PRIORITY")
 	private Integer priority;
 
-	@Column(name = "PARENT_TASK")
-	private boolean parentTask;
+	@Column(name = "PARENT_TASK_NAME")
+	private String parentTaskName;
+	
+	@Column(name = "IS_PARENT_TASK")
+	private boolean isParentTask;
 
 	@Column(name = "PROJECT_NAME")
 	private String projectName;
@@ -52,14 +55,16 @@ public class Task implements Serializable {
 	private String endDate;
 
 	@Column(name = "USER_NAME")
-	private String user;
+	private String userName;
 
-	public String getUser() {
-		return user;
+	
+
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public Integer getTaskId() {
@@ -110,12 +115,21 @@ public class Task implements Serializable {
 		this.task = task;
 	}
 
-	public boolean isParentTask() {
-		return parentTask;
+	public String getParentTaskName() {
+		return parentTaskName;
 	}
 
-	public void setParentTask(boolean parentTask) {
-		this.parentTask = parentTask;
+	public void setParentTaskName(String parentTaskName) {
+		this.parentTaskName = parentTaskName;
 	}
+
+	public boolean isParentTask() {
+		return isParentTask;
+	}
+
+	public void setParentTask(boolean isParentTask) {
+		this.isParentTask = isParentTask;
+	}
+
 
 }

@@ -20,24 +20,13 @@ public class TaskController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addTask")
-	public Task addTask(@RequestBody Task task) {
-
-		// Task task = new Task();
-		// task.setParentTask(false);
-		// task.setPriority(30);
-		//
-		//
-		// Project project = new Project();
-		// project.setManager("Sagar deshmukh");
-		// project.setPriority(10);
-		// project.setProject("PRoject Manager");
-
-		// task.setProject(project);
-		// task.setTask("create UI page");
-
-		taskService.save(task);
-
-		return task;
+	public void addTask(@RequestBody Task task) {
+		
+		if (task.getProject() == null || task.getTask() == null || task.getUserName() == null ) {
+			
+		} else {
+			taskService.save(task);
+		}
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")

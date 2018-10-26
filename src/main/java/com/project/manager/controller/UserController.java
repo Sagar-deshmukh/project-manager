@@ -17,10 +17,11 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	
-	/**This method retrieves all the users.
-	 * @return List of Users 
+
+	/**
+	 * This method retrieves all the users.
+	 * 
+	 * @return List of Users
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/getUsers")
@@ -28,21 +29,28 @@ public class UserController {
 
 		return userService.list();
 	}
-	
-	/**This method add user to the record.
-	 * @return List of Users 
+
+	/**
+	 * This method add user to the record.
+	 * 
+	 * @return List of Users
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addUser")
 	public List<User> addUser(@RequestBody User user) {
 
-		userService.save(user);
-
-		return this.getUsers();
+		if (user.getFirstName() == null || user.getLastName() == null || user.getEmpID() == null) {
+			return this.getUsers();
+		} else {
+			userService.save(user);
+			return this.getUsers();
+		}
 	}
 
-	/**This method deletes the user from the record.
-	 * @return List of Users 
+	/**
+	 * This method deletes the user from the record.
+	 * 
+	 * @return List of Users
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/deleteUser")
@@ -52,10 +60,11 @@ public class UserController {
 
 		return userService.list();
 	}
-	
-	
-	/**This method deletes the user from the record.
-	 * @return List of Users 
+
+	/**
+	 * This method deletes the user from the record.
+	 * 
+	 * @return List of Users
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/updateUser")
