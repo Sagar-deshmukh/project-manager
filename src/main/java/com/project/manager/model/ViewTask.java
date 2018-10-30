@@ -29,8 +29,8 @@ public class ViewTask implements Serializable {
 	@Column(name = "PRIORITY")
 	private Integer priority;
 	
-	@Column(name = "PARENT_TASK")
-	private boolean parentTask;
+//	@Column(name = "PARENT_TASK")
+//	private boolean parentTask;
 			
 	@Column(name = "PROJECT")
 	private String project;
@@ -89,13 +89,13 @@ public class ViewTask implements Serializable {
 		this.task = task;
 	}
 
-	public boolean isParentTask() {
-		return parentTask;
-	}
-
-	public void setParentTask(boolean parentTask) {
-		this.parentTask = parentTask;
-	}
+//	public boolean isParentTask() {
+//		return parentTask;
+//	}
+//
+//	public void setParentTask(boolean parentTask) {
+//		this.parentTask = parentTask;
+//	}
 
 	/*public User getUser() {
 		return user;

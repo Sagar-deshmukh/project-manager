@@ -17,17 +17,6 @@ public class Task implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/*
-	 * Many to one Mapping example
-	 * 
-	 * @ManyToOne(cascade=CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name="PROJECT",referencedColumnName="PROJECT_ID")
-	 * 
-	 * @PrimaryKeyJoinColumn
-	 */
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "TASK_ID")

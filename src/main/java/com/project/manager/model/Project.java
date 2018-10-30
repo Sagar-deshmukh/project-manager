@@ -52,7 +52,7 @@ public class Project implements Serializable{
 
 	public void setManager(String manager) {
 		this.manager = manager;
-	}	
+	}
 
 	public String getProject() {
 		return project;
