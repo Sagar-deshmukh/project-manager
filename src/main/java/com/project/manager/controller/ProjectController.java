@@ -30,7 +30,7 @@ public class ProjectController {
 	@PostMapping("/addProject")
 	public List<Project> addProject(@RequestBody Project project ) {
 
-		if (project.getProject() == null || project.getManager() == null) {
+		if (project.getProject() == null) {
 			return this.getProjects();
 		} else {
 			projectService.save(project);

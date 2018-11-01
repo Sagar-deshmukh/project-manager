@@ -22,7 +22,7 @@ public class TaskController {
 	@PostMapping("/addTask")
 	public void addTask(@RequestBody Task task) {
 		
-		if (task.getProject() == null || task.getTask() == null || task.getUserName() == null ) {
+		if (task.getTask() == null) {
 			
 		} else {
 			taskService.save(task);
